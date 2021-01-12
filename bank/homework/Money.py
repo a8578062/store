@@ -84,7 +84,6 @@ class Money:
         return True
 
     def getmoney_bank(self,account, password):
-        file = open("users.txt", "w+", encoding="utf-8")
         file1 = open("users.txt", "r+", encoding="utf-8")
         a = Money()
         database = a.getDatabase()
@@ -116,9 +115,9 @@ class Money:
                 if money > database[account]["money"]:
                     return 3
                 else:
+                    file = open("users.txt", "w+", encoding="utf-8")
                     database[account]["money"] = database[account]["money"] - money
                     a.setDatabase(database)
-
                     database = a.getDatabase()
                     for i in database:
                         for j in database[i]:
